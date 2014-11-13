@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>C++ templates</title>
+    <title>C++ templates explained</title>
 
     <meta name="description" content="A presentation about C++ templates.">
     <meta name="author" content="Maciej Gamrat/Bartłomiej Kordalski">
@@ -307,6 +307,7 @@ Point p = {-2, 9};
         <section>
           <h2>Adjustable precision?</h2>
           <pre class="fragment"><code class="cpp" data-trim contenteditable>
+template &lt;class T&gt;
 struct Point
 {
     T x;
