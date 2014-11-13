@@ -436,14 +436,12 @@ cout &lt;&lt; mass.get() &lt;&lt; endl;
                 <li>default constructor (setting default values) and destructor</li>
                 <li>constructor accepting <code>x,y,z</code> parameters</li>
                 <li>copy constructor <code>Vector3d(const Vector3d&amp; vec)</code></li>
-                <li>setters for single coords <code>setX(x),setY(y),setZ(z)</code></li>
                 <li>setter <code>set(x,y,z)</code> for all coords at once</li>
-                <li>respective getters</li>
-                <li><code>getLength()</code> method</li>
-                <li><code>normalize()</code> method</li>
+                <li>setters and getters for single coords</li>
+                <li><code>getLength()</code> and <code>normalize()</code> methods</li>
               </ul>
             </li>
-            <li>Define <code>main()</code> function that
+            <li>Define <code>main()</code> function that:
               <ul>
                 <li>declares a fixed <code>int</code> 3D vector and display its values</li>
                 <li>has a <code>float</code> vector with data provided by the user</li>
@@ -468,14 +466,12 @@ cout &lt;&lt; mass.get() &lt;&lt; endl;
         progress: true,
         history: true,
         center: true,
-        theme: 'night',
+        theme: 'beige',
         transition: 'fade',
 
         // Optional libraries used to extend on reveal.js
         dependencies: [
           { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
           { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
           { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
           { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
