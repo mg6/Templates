@@ -55,6 +55,9 @@
         </section>
 
         <section>
+          <aside class="notes">
+            <p>Multiple type-specific implementations</p>
+          </aside>
           <pre class="fragment" data-fragment-index="1"><code class="cpp" data-trim contenteditable>
 float sum(float a, float b)
 {
@@ -93,6 +96,9 @@ int     result1 = sum(4, -5);
 double  result2 = sum(5.6, 2.4);
 char    result3 = sum('.', ',');  // equals 'Z'
           </code></pre>
+          <aside class="notes">
+            <p>Single declaration - 3 resultant functions - explain class keyword - type doesn't have to necessarily be of class type</p>
+          </aside>
         </section>
 
         <section>
@@ -115,6 +121,9 @@ double sum(double a, double b) { return a + b; }
 
         <section>
           <p>The compiler <strong>deduces</strong> proper type on function call.</p>
+          <aside class="notes">
+            <p>important statement - compiler creates functions of only needed/used types</p>
+          </aside>
         </section>
 
         <section>
@@ -128,6 +137,9 @@ template &lt;class T&gt; /* templated function declaration here */
 
 template &lt;class T&gt; T square(T arg) { return arg * arg; }
           </code></pre>
+          <aside class="notes">
+            <p>syntax used also for classes</p>
+          </aside>
         </section>
 
         <section>
@@ -136,6 +148,10 @@ template &lt;class T&gt; T square(T arg) { return arg * arg; }
           <pre><code class="cpp" data-trim contenteditable style="text-align: center; font-size: 120%; padding: 12pt 0">
 template &lt;class A, class B, class C&gt; /* declaration here */
           </code></pre>
+          <aside class="notes">
+            <p>variable-length type lists also possible</p>
+            <p>(template&lt;...&gt; class list)</p>
+          </aside>
         </section>
 
         <section>
@@ -167,6 +183,9 @@ float e = 2.71f;
 cout &lt;&lt; greater(pi, e); // pi wins here
             </code></pre>
           </div>
+          <aside class="notes">
+            <p>Wait for the answer</p>
+          </aside>
         </section>
 
         <section>
@@ -181,6 +200,9 @@ greater(title, descr) // complete nonsense compiles easily!
             </code></pre>
             <p>Macro functions are just simple text replacements.</p>
           </div>
+          <aside class="notes">
+            <p>Wait for answer!</p>
+          </aside>
         </section>
 
         <section>
@@ -207,7 +229,7 @@ cout &lt;&lt; greater(x1, x2);
         </section>
 
         <section>
-          <h2>Use type references!</h2>
+          <h2>Use references!</h2>
           <pre><code class="cpp" data-trim contenteditable>
 template &lt;class T&gt;
 T&amp; greater(T&amp; a, T&amp; b)
@@ -226,7 +248,7 @@ int x2 = 3;
 
 greater(x1, x2) = -7;
 
-// which at runtime translates to:
+// which at runtime is an equivalent of:
 
 x1 = -7;
           </code></pre>
@@ -277,6 +299,9 @@ sum_array(char_array, 3)  // == char('&amp;')
 sum_array(text, 2)        // == std::string("testing")
 
           </code></pre>
+          <aside class="notes">
+            <p>Explain differences - why T()? - assumption for operator+=</p>
+          </aside>
         </section>
 
         <!--
@@ -349,6 +374,9 @@ Point&lt;float&gt; p;
           <h2>Hold on.</h2>
           <p>Are <code class="cpp">Point&lt;float&gt;</code> and <code class="cpp">Point&lt;unsigned&gt;</code> same classes?</p>
           <p class="fragment">No, they represent <strong>two different classes</strong> for the compiler.</p>
+          <aside class="notes">
+            <p>Zaczekaj na odpowiedź z sali.</p>
+          </aside>
         </section>
 
         <section>
@@ -358,6 +386,10 @@ Point&lt;float&gt; p;
         <section>
           <h2>Pair class</h2>
           <p>Let's write a general purpose Pair class.</p>
+          <aside class="notes">
+            <p>W ten sposób będziemy mieli klasę uniwersalną, która przechowa
+            nie tylko punkty</p>
+          </aside>
         </section>
 
         <section>
@@ -386,7 +418,7 @@ Point yet_another(another);    // copy from another
           <p class="fragment">We can pass 2 different types to our class now.</p>
           <aside class="notes">
             <ul>
-              <li>„1st, 2nd” mogą być różne typy.</li>
+              <li>„1st, 2nd” mogą być różne typy nazwane F i S.</li>
               <li>Typedef - skracamy sobie nazwę typu (readability purposes)</li>
               <hr>
               <li>T - TYP podany przez deva</li>
@@ -473,7 +505,10 @@ cout &lt;&lt; mass.get() &lt;&lt; endl;
               </ul>
             </li>
             <li>Aid yourself with slides: <a href="http://mg6.github.com/Templates">mg6.github.com/Templates</a></li>
-          </ul>
+          </ol>
+          <aside class="notes">
+            <p><code>operator+, operator-</code></p>
+          </aside>
         </section>
       </div>
     </div>
