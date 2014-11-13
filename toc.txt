@@ -1,0 +1,127 @@
+Templates:
+- intro
+  - template types
+- function templates
+  - sum() function
+    - simple task: sum 2 elements
+    - no need to repeat code with use of templates
+    - f(x):
+      int sum(int a, int b)
+      {
+        return a + b;
+      }
+    - templated:
+      template <class T>
+      T sum(T a, T b)
+      {
+        return a + b;
+      }
+
+      // usage:
+      double result = sum(5.6, 2.4);
+  - greater() function
+    - macro version:
+      #define greater(a, b) ((a) > (b) ? (a) : (b))
+    - references
+    - f(x):
+      template <class T>
+      T& greater(T& a, T& b)
+      {
+        if (a > b)
+          return a;
+
+        return b;
+      }
+
+      // usage:
+      int x1 = 5;
+      int x2 = 3;
+      cout << greater(x1, x2);
+
+      // we can do this:
+      greater(x1, x2) = -3;     // translates to: x1 = -3;
+  - sum_array() function
+    - f(x):
+      template <class T>
+      T sum_array(T data[], int count)
+      {
+        T sum = T();           // why not sum = 0?
+
+        for (int i = 0; i < count; ++i)
+          sum += data[i];    // watch out!
+
+        return sum;
+      }
+
+      // usage
+      int int_array[4] = { 1, 6, 2, 1 };
+      char char_array[3] = { 'a', 'b', 'c' };
+      int sum_of_ints = sum_array(int_array, 4);
+      char sum_of_chars = sum_array(char_array, 3);
+- class templates
+  - Point class
+    - first:
+      struct Point
+      {
+        int x;
+        int y;
+
+        Point(int _x, int _y) : x(_x), y(_y) {}
+        Point(const Point& p) : x(p.x), y(p.y) {}
+      }
+    - second:
+      template <class T>
+      struct Point
+      {
+        T x;
+        T y;
+
+        Point(T _x, T _y) : x(_x), y(_y) {}
+        Point(const Point& p) : x(p.x), y(p.y) {}
+      }
+  - Pair class
+    - multiple type parameters
+    - code:
+      template <class F, class S>
+      struct Pair
+      {
+        F first;
+        S second;
+
+        Pair(F _first, S _second) : first(_first), second(_second) {}
+        Pair(const Pair& p) : first(p.first), second(p.second) {}
+      }
+
+      // usage:
+      Pair<int, int> point(3, 5);
+
+      // or even:
+      typedef Pair<float, float> Point;
+      Point another(25.0f, -33.0f);  // explicit values given
+      Point yet_another(another);    // copy from another
+  - Getter/Setter class
+    - code:
+      template <class T>
+      class DataHolder
+      {
+      public:
+        T data;
+
+        DataHolder() : data( T() ) {}
+
+        void set(T value)
+        {
+          data = value;
+        }
+
+        T get()
+        {
+          return data;
+        }
+      }
+
+      // usage:
+      DataHolder<double> mass;
+      mass.set(56.63);
+      cout << mass.get() << endl;
+  - ???
