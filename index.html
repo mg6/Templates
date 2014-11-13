@@ -302,6 +302,9 @@ struct Point
 // usage:
 Point p = {-2, 9};
           </code></pre>
+          <aside class="notes">
+            <p>Podstawy, proste, nic nowego</p>
+          </aside>
         </section>
 
         <section>
@@ -321,6 +324,13 @@ struct Point
 // usage:
 Point&lt;float&gt; p(45.5f, 251.3f);
           </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>T - TYP podany przez deva</li>
+              <li>konstruktory - Pierwszy nie wiemy jaki „typ” mamy.</li>
+              <li>Copy constructor</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
@@ -374,6 +384,16 @@ Point another(25.0f, -33.0f);  // explicit values given
 Point yet_another(another);    // copy from another
           </code></pre>
           <p class="fragment">We can pass 2 different types to our class now.</p>
+          <aside class="notes">
+            <ul>
+              <li>„1st, 2nd” mogą być różne typy.</li>
+              <li>Typedef - skracamy sobie nazwę typu (readability purposes)</li>
+              <hr>
+              <li>T - TYP podany przez deva</li>
+              <li>konstruktory - Pierwszy nie wiemy jaki „typ” mamy.</li>
+              <li>Copy constructor</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
@@ -405,6 +425,9 @@ public:
     }
 }
           </code></pre>
+          <aside class="notes">
+              <p>Wytłumacz set get</p>
+          </aside>
         </section>
 
         <section>
