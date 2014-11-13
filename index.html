@@ -29,6 +29,8 @@
           <p><small>M. Gamrat &amp; B. Kordalski</small></p>
         </section>
 
+        <!-- ******************* -->
+
         <section>
           <h2>Types</h2>
           <ul>
@@ -53,19 +55,19 @@
         </section>
 
         <section>
-          <pre class="fragment" data-fragment-index="1"><code data-trim contenteditable>
+          <pre class="fragment" data-fragment-index="1"><code class="cpp" data-trim contenteditable>
 float sum(float a, float b)
 {
     return a + b;
 }
           </code></pre>
-          <pre><code data-trim contenteditable>
+          <pre><code class="cpp" data-trim contenteditable>
 int sum(int a, int b)
 {
     return a + b;
 }
           </code></pre>
-          <pre class="fragment" data-fragment-index="2"><code data-trim contenteditable>
+          <pre class="fragment" data-fragment-index="2"><code class="cpp" data-trim contenteditable>
 char sum(char a, char b)
 {
     return a + b;
@@ -79,7 +81,7 @@ char sum(char a, char b)
 
         <section>
           <h2>Templated version!</h2>
-          <pre><code data-trim contenteditable>
+          <pre><code class="cpp" data-trim contenteditable>
 template &lt;class T&gt;
 T sum(T a, T b)
 {
@@ -91,21 +93,37 @@ int     result1 = sum(4, -5);
 double  result2 = sum(5.6, 2.4);
 char    result3 = sum('.', ',');  // equals 'Z'
           </code></pre>
-          <pre class="fragment"><code data-trim contenteditable>
-int sum(int a, int b)
-{
-    return a + b;
-}
+        </section>
+
+        <section>
+          <h2></h2>
+          <pre><code class="cpp" data-trim contenteditable style="text-align: center; font-size: 120%; padding: 12pt 0">
+template &lt;class T&gt;
+T sum(T a, T b) { return a + b; }
+
+sum(5.6, 2.4)
+          </code></pre>
+          <p>&darr;</p>
+          <pre><code class="cpp" data-trim contenteditable style="text-align: center; font-size: 120%; padding: 12pt 0">
+5.6 &rarr; double &emsp; 2.4 &rarr; double
+          </code></pre>
+          <p>&darr;</p>
+          <pre><code class="cpp" data-trim contenteditable style="text-align: center; font-size: 120%; padding: 12pt 0">
+double sum(double a, double b) { return a + b; }
           </code></pre>
         </section>
 
         <section>
+          <p>The compiler <strong>deduces</strong> proper type on function call.</p>
+        </section>
+
+        <section>
           <h2>Template syntax</h2>
-          <pre><code data-trim contenteditable style="text-align: center; font-size: 120%; padding: 12pt 0">
+          <pre><code class="cpp" data-trim contenteditable style="text-align: center; font-size: 120%; padding: 12pt 0">
 template &lt;class T&gt; /* templated function declaration here */
           </code></pre>
           <p>such as:</p>
-          <pre><code data-trim contenteditable style="text-align: center; font-size: 120%; padding: 12pt 0">
+          <pre><code class="cpp" data-trim contenteditable style="text-align: center; font-size: 120%; padding: 12pt 0">
 /* square(x) -> return x^2 */
 
 template &lt;class T&gt; T square(T arg) { return arg * arg; }
@@ -115,7 +133,7 @@ template &lt;class T&gt; T square(T arg) { return arg * arg; }
         <section>
           <h2>Multiple types</h2>
           <p>We can declare multiple type parameters as well:</p>
-          <pre><code data-trim contenteditable style="text-align: center; font-size: 120%; padding: 12pt 0">
+          <pre><code class="cpp" data-trim contenteditable style="text-align: center; font-size: 120%; padding: 12pt 0">
 template &lt;class A, class B, class C&gt; /* declaration here */
           </code></pre>
         </section>
@@ -138,8 +156,8 @@ template &lt;class A, class B, class C&gt; /* declaration here */
         <section>
           <h2>Of course not.</h2>
           <div class="fragment">
-            <p><code>#define</code> to the rescue!</p>
-            <pre><code data-trim contenteditable>
+            <p><code class="c">#define</code> to the rescue!</p>
+            <pre><code class="cpp" data-trim contenteditable>
 #define greater(x, y) ((x) > (y) ? (x) : (y))
 
 // usage:
@@ -155,7 +173,7 @@ cout &lt;&lt; greater(pi, e); // pi wins here
           <h2>Why our macro <del>suc</del> fails?</h2>
           <div class="fragment">
             <p>There is no type safety.</p>
-            <pre><code data-trim contenteditable>
+            <pre><code class="cpp" data-trim contenteditable>
 char* title = "hello there";
 char* descr = "a description of a book";
 
@@ -167,7 +185,7 @@ greater(title, descr) // complete nonsense compiles easily!
 
         <section>
           <h2>Templated comparison</h2>
-          <pre><code data-trim contenteditable>
+          <pre><code class="cpp" data-trim contenteditable>
 template &lt;class T&gt;
 T greater(T a, T b)
 {
@@ -182,12 +200,15 @@ int x1 = 5;
 int x2 = 3;
 cout &lt;&lt; greater(x1, x2);
           </code></pre>
-          <p class="fragment">What if we had big objects to compare instead of ints?</p>
+        </section>
+
+        <section>
+          <p>What if we had big objects to compare instead of <code class="c">int</code>?</p>
         </section>
 
         <section>
           <h2>Use type references!</h2>
-          <pre><code data-trim contenteditable>
+          <pre><code class="cpp" data-trim contenteditable>
 template &lt;class T&gt;
 T&amp; greater(T&amp; a, T&amp; b)
 {
@@ -214,12 +235,12 @@ x1 = -7;
         <section>
           <h2>sum_array(x, n)</h2>
           <p>Now define a function that counts the sum of given array of elements.</p>
-          <p>Obviously we need the array <code>x</code> and its size <code>n</code>.</p>
+          <p>Obviously we need the array <code class="c">x</code> and its size <code class="c">n</code>.</p>
         </section>
 
         <section>
           <h2>Integer case</h2>
-          <pre><code data-trim contenteditable>
+          <pre><code class="cpp" data-trim contenteditable>
 int sum_array(int data[], int count)
 {
     int sum = 0;
@@ -234,7 +255,7 @@ int sum_array(int data[], int count)
 
         <section>
           <h2>Templated array sum</h2>
-          <pre><code data-trim contenteditable>
+          <pre><code class="cpp" data-trim contenteditable>
 template &lt;class T&gt;
 T sum_array(T data[], int count)
 {
@@ -271,7 +292,7 @@ sum_array(text, 2)        // == std::string("testing")
         <section>
           <h2>Point class</h2>
           <p>Let's have a 2D point structure.</p>
-          <pre class="fragment"><code data-trim contenteditable>
+          <pre class="fragment"><code class="cpp" data-trim contenteditable>
 struct Point
 {
     int x;
@@ -285,7 +306,7 @@ Point p = {-2, 9};
 
         <section>
           <h2>Adjustable precision?</h2>
-          <pre class="fragment"><code data-trim contenteditable>
+          <pre class="fragment"><code class="cpp" data-trim contenteditable>
 struct Point
 {
     T x;
@@ -304,24 +325,103 @@ Point&lt;float&gt; p(45.5f, 251.3f);
         <section>
           <h2>Declaring templated objects</h2>
           <p>If we write:</p>
-          <pre><code data-trim contenteditable style="font-size: 120%; text-align: center; padding: 12pt 0">
+          <pre><code class="cpp" data-trim contenteditable style="font-size: 120%; text-align: center; padding: 12pt 0">
 Point&lt;float&gt; p;
           </code></pre>
-          <p>we tell the compiler to replace all <code>T</code>s in class template with <code>float</code>
-          at compile time, so that the constructor can accept <code>float</code> parameters.</p>
+          <p>we tell the compiler to replace all <code class="cpp">T</code>s in class template with <code class="c">float</code>
+          at compile time, so that the constructor can accept <code class="c">float</code> parameters.</p>
           <p>This is called the <strong>instantiation</strong> of class template.</p>
           <p class="fragment">That's the time the compiler checks for errors.</p>
         </section>
 
         <section>
-          <h2>More on instantiation</h2>
-          <p>Specific versions of templated class are created at compile time.</p>
-          <p><code>Point&lt;float&gt;</code> and Point&lt;unsigned&gt; represent two <strong>different</strong> classes!</p>
+          <h2>Hold on.</h2>
+          <p>Are <code class="cpp">Point&lt;float&gt;</code> and <code class="cpp">Point&lt;unsigned&gt;</code> same classes?</p>
+          <p class="fragment">No, they represent <strong>two different classes</strong> for the compiler.</p>
         </section>
 
         <section>
+          <p>Point class would be useful. But we can do better.</p>
+        </section>
+
+        <section>
+          <h2>Pair class</h2>
+          <p>Let's write a general purpose Pair class.</p>
+        </section>
+
+        <section>
+          <h2>Template class Pair</h2>
+          <pre><code class="cpp" data-trim contenteditable>
+template &lt;class F, class S&gt;
+struct Pair
+{
+    F first;
+    S second;
+
+    Pair() : first( F() ), second( S() ) {}
+    Pair(F _first, S _second) : first(_first), second(_second) {}
+    Pair(const Pair&amp; p) : first(p.first), second(p.second) {}
+}
+
+// usage:
+Pair&lt;int, int&gt; point(3, 5);
+Pair&lt;std::string, float&gt; product_rating;
+
+// or even:
+typedef Pair&lt;float, float&gt; Point;
+Point another(25.0f, -33.0f);  // explicit values given
+Point yet_another(another);    // copy from another
+          </code></pre>
+          <p class="fragment">We can pass 2 different types to our class now.</p>
+        </section>
+
+        <section>
+          <h2>Data holder class</h2>
+          <p>Finally let's write a simple getter/setter class.</p>
+        </section>
+
+        <section>
+          <h2>Data holder class</h2>
+          <pre><code class="cpp" data-trim contenteditable>
+template &lt;class T&gt;
+class DataHolder
+{
+private:
+    T data;
+
+public:
+    DataHolder() : data( T() ) {}
+    DataHolder(T value) : data(value) {}
+
+    void set(T value)
+    {
+        data = value;
+    }
+
+    T get()
+    {
+        return data;
+    }
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Data holder in action</h2>
+          <pre><code class="cpp" data-trim contenteditable>
+DataHolder&lt;double&gt; mass;
+mass.set(56.63);
+cout &lt;&lt; mass.get() &lt;&lt; endl;
+          </code></pre>
+        </section>
+
+        <!-- ******************* -->
+
+        <section>
           <h1>THE END</h1>
-          <h3>M. Gamrat &amp; B. Kordalski</h3>
+          <h3>M. Gamrat &amp; B. Kordalski, 2014</h3>
+          <p>Check out <a href="http://www.codeproject.com/Articles/257589/An-Idiots-Guide-to-Cplusplus-Templates-Part"
+            title="An Idiot's Guide to C++ Templates - Part 1">a great guide on C++ templates</a> used for this presentation.</p>
         </section>
       </div>
     </div>
